@@ -1,0 +1,410 @@
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (59.8016ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={"email"=>"megha893.arora@gmail.com"} flags=[] limit=1 skip=0 batch_size=nil fields={:_id=>1} (31.4302ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=savo collection=users documents=[{"_id"=>"56f7bd7213e965b3e1000001", "email"=>"megha893.arora@gmail.com", "encrypted_password"=>"$2a$10$31catikZvVzdZJ/iCOMQieZlCKV05IMv9QHXCVxrwYTXIDtbB0hD2", "sign_in_count"=>0, "name"=>"megha", "updated_at"=>2016-03-27 11:01:06 UTC, "created_at"=>2016-03-27 11:01:06 UTC}] flags=[] (0.4046ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-03-27 16:33:41 +0530
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.7406ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (2.2514ms)
+  Rendered home/index.html.erb within layouts/application (22.5ms)
+Compiled home.css  (5ms)  (pid 31868)
+Compiled application.css  (106ms)  (pid 31868)
+Compiled jquery.js  (15ms)  (pid 31868)
+Compiled jquery_ujs.js  (2ms)  (pid 31868)
+Compiled home.js  (597ms)  (pid 31868)
+Compiled application.js  (727ms)  (pid 31868)
+  Rendered layouts/_navigation.html.erb (7.4ms)
+  Rendered layouts/_messages.html.erb (1.4ms)
+Completed 200 OK in 1317ms (Views: 1315.2ms)
+
+
+Started GET "/users/56f7bd7213e965b3e1000001" for 127.0.0.1 at 2016-03-27 16:34:35 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"56f7bd7213e965b3e1000001"}
+Completed 401 Unauthorized in 26ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-03-27 16:34:36 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/devise-3.0.3/app/views/devise/sessions/new.html.erb within layouts/application (45.1ms)
+  Rendered layouts/_navigation.html.erb (4.1ms)
+  Rendered layouts/_messages.html.erb (0.5ms)
+Completed 200 OK in 85ms (Views: 79.7ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-03-27 16:35:00 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"q7CAFB7C6Y6XuhFRBac8xAcSfApaqDqHCfSK2/OYKsQ=", "user"=>{"email"=>"megha893.arora@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.5974ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={"$query"=>{"email"=>"megha893.arora@gmail.com"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (259.9480ms)
+  MOPED: 127.0.0.1:27017 UPDATE       database=savo collection=users selector={"_id"=>"56f7bd7213e965b3e1000001"} update={"$set"=>{"last_sign_in_at"=>2016-03-27 11:05:00 UTC, "current_sign_in_at"=>2016-03-27 11:05:00 UTC, "last_sign_in_ip"=>"127.0.0.1", "current_sign_in_ip"=>"127.0.0.1", "sign_in_count"=>1, "updated_at"=>2016-03-27 11:05:00 UTC}} flags=[] (0.7386ms)
+Redirected to http://localhost:3000/users/56f7bd7213e965b3e1000001
+Completed 302 Found in 580ms
+
+
+Started GET "/users/56f7bd7213e965b3e1000001" for 127.0.0.1 at 2016-03-27 16:35:00 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"56f7bd7213e965b3e1000001"}
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={"$query"=>{"_id"=>"56f7bd7213e965b3e1000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (67.6384ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={"_id"=>"56f7bd7213e965b3e1000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.4293ms)
+  Rendered users/show.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_navigation.html.erb (3.8ms)
+  Rendered layouts/_messages.html.erb (0.4ms)
+Completed 200 OK in 191ms (Views: 105.2ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-03-27 16:35:08 +0530
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BEOLFqNWU0ejl9pPuzRTi1uhBq51zJ9JMOzG5+vwcfw="}
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={"$query"=>{"_id"=>"56f7bd7213e965b3e1000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.5218ms)
+Redirected to http://localhost:3000/
+Completed 302 Found in 14ms
+
+
+Started GET "/" for 127.0.0.1 at 2016-03-27 16:35:08 +0530
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.3988ms)
+  Rendered home/index.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_navigation.html.erb (2.8ms)
+  Rendered layouts/_messages.html.erb (6.6ms)
+Completed 200 OK in 37ms (Views: 36.2ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-03-27 16:35:12 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (20.2ms)
+  Rendered layouts/_navigation.html.erb (3.4ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 84ms (Views: 80.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-03-27 16:35:38 +0530
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1+xQF4Ol+vr5oiwkffKYrFmXqRgBQOC+mXl1Xv+kgIY=", "user"=>{"name"=>"Rohan", "email"=>"rohan12086@iiitd.ac.in", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={"email"=>"rohan12086@iiitd.ac.in"} flags=[] limit=1 skip=0 batch_size=nil fields={:_id=>1} (1.0688ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=savo collection=users documents=[{"_id"=>"56f7be8213e965bbaa000001", "email"=>"rohan12086@iiitd.ac.in", "encrypted_password"=>"$2a$10$mzA5vPWBopUCDdADtC/DLupe/Ymq4.9huK40MoyPxXhYJNfaF143S", "sign_in_count"=>0, "name"=>"Rohan", "updated_at"=>2016-03-27 11:05:38 UTC, "created_at"=>2016-03-27 11:05:38 UTC}] flags=[] (0.9577ms)
+  MOPED: 127.0.0.1:27017 UPDATE       database=savo collection=users selector={"_id"=>"56f7be8213e965bbaa000001"} update={"$set"=>{"last_sign_in_at"=>2016-03-27 11:05:38 UTC, "current_sign_in_at"=>2016-03-27 11:05:38 UTC, "last_sign_in_ip"=>"127.0.0.1", "current_sign_in_ip"=>"127.0.0.1", "sign_in_count"=>1, "updated_at"=>2016-03-27 11:05:38 UTC}} flags=[] (0.3798ms)
+Redirected to http://localhost:3000/
+Completed 302 Found in 305ms
+
+
+Started GET "/" for 127.0.0.1 at 2016-03-27 16:35:38 +0530
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={"$query"=>{"_id"=>"56f7be8213e965bbaa000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3244ms)
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.6139ms)
+  Rendered home/index.html.erb within layouts/application (6.1ms)
+  Rendered layouts/_navigation.html.erb (2.3ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 26ms (Views: 24.9ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-03-27 16:35:47 +0530
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"1+xQF4Ol+vr5oiwkffKYrFmXqRgBQOC+mXl1Xv+kgIY="}
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={"$query"=>{"_id"=>"56f7be8213e965bbaa000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.0993ms)
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms
+
+
+Started GET "/" for 127.0.0.1 at 2016-03-27 16:35:47 +0530
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (2.4071ms)
+  Rendered home/index.html.erb within layouts/application (7.8ms)
+  Rendered layouts/_navigation.html.erb (2.7ms)
+  Rendered layouts/_messages.html.erb (0.3ms)
+Completed 200 OK in 36ms (Views: 35.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-03-27 16:38:07 +0530
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.5328ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1265ms)
+  Rendered home/index.html.erb within layouts/application (15.7ms)
+  Rendered layouts/_navigation.html.erb (5.6ms)
+  Rendered layouts/_messages.html.erb (1.2ms)
+Completed 200 OK in 120ms (Views: 118.9ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.8258ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={"$query"=>{}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.9720ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-03-27 17:25:43 +0530
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.5879ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.3783ms)
+  Rendered home/index.html.erb within layouts/application (14.0ms)
+  Rendered layouts/_navigation.html.erb (4.4ms)
+  Rendered layouts/_messages.html.erb (1.9ms)
+Completed 200 OK in 110ms (Views: 107.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-03-27 17:25:43 +0530
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.6544ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2453ms)
+  Rendered home/index.html.erb within layouts/application (7.5ms)
+  Rendered layouts/_navigation.html.erb (2.3ms)
+  Rendered layouts/_messages.html.erb (0.3ms)
+Completed 200 OK in 43ms (Views: 42.8ms)
+
+
+Started GET "/users/56f7bd7213e965b3e1000001" for 127.0.0.1 at 2016-03-27 17:25:52 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"56f7bd7213e965b3e1000001"}
+Completed 401 Unauthorized in 21ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-03-27 17:25:52 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.2/gems/devise-3.0.3/app/views/devise/sessions/new.html.erb within layouts/application (33.3ms)
+  Rendered layouts/_navigation.html.erb (2.0ms)
+  Rendered layouts/_messages.html.erb (0.3ms)
+Completed 200 OK in 62ms (Views: 57.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-03-27 17:26:01 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mHKmJxpN5fMilNZMPB+v23ZuUlfpHi0xqPtENfg+zfI=", "user"=>{"email"=>"megha893.arora@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.4267ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={"$query"=>{"email"=>"megha893.arora@gmail.com"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1067ms)
+  MOPED: 127.0.0.1:27017 UPDATE       database=savo collection=users selector={"_id"=>"56f7bd7213e965b3e1000001"} update={"$set"=>{"points"=>0, "current_sign_in_at"=>2016-03-27 11:56:01 UTC, "sign_in_count"=>2, "updated_at"=>2016-03-27 11:56:01 UTC}} flags=[] (0.7079ms)
+Redirected to http://localhost:3000/users/56f7bd7213e965b3e1000001
+Completed 302 Found in 306ms
+
+
+Started GET "/users/56f7bd7213e965b3e1000001" for 127.0.0.1 at 2016-03-27 17:26:01 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"56f7bd7213e965b3e1000001"}
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={"$query"=>{"_id"=>"56f7bd7213e965b3e1000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (2.3482ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={"_id"=>"56f7bd7213e965b3e1000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.4894ms)
+  Rendered users/show.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navigation.html.erb (4.2ms)
+  Rendered layouts/_messages.html.erb (0.4ms)
+Completed 200 OK in 45ms (Views: 36.2ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2016-03-27 17:26:07 +0530
+Processing by Devise::RegistrationsController#edit as HTML
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.3368ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={"$query"=>{"_id"=>"56f7bd7213e965b3e1000001"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.0643ms)
+  Rendered devise/registrations/edit.html.erb within layouts/application (15.4ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 43ms (Views: 37.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-03-28 14:15:58 +0530
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (30.8211ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (4.5090ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (5.9621ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (6.4120ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (6.3543ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (6.1228ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (5.5060ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (40.4201ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (7.2501ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (5.5990ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (5.8272ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (5.7242ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (5.9199ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (5.9142ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (5.9979ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (35.8329ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (5.6341ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (7.0362ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (5.9702ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (5.9893ms)
+  MOPED: Could not connect to any node in replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>, refreshing list.
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (6.3534ms)
+  Rendered home/index.html.erb within layouts/application (5274.3ms)
+Completed 500 Internal Server Error in 5283ms
+
+Moped::Errors::ConnectionFailure - Could not connect to any secondary or primary nodes for replica set <Moped::Cluster nodes=[<Moped::Node resolved_address="127.0.0.1:27017">]>:
+  moped (1.5.3) lib/moped/cluster.rb:270:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/cluster.rb:268:in `with_secondary'
+  moped (1.5.3) lib/moped/session/context.rb:104:in `with_node'
+  moped (1.5.3) lib/moped/cursor.rb:137:in `load_docs'
+  moped (1.5.3) lib/moped/cursor.rb:25:in `each'
+  moped (1.5.3) lib/moped/query.rb:76:in `each'
+  mongoid (3.1.7) lib/mongoid/contextual/mongo.rb:122:in `block in each'
+  mongoid (3.1.7) lib/mongoid/contextual/mongo.rb:619:in `selecting'
+  mongoid (3.1.7) lib/mongoid/contextual/mongo.rb:121:in `each'
+  mongoid (3.1.7) lib/mongoid/contextual.rb:19:in `each'
+  app/views/home/index.html.erb:2:in `_app_views_home_index_html_erb__3169582450153193300_70363157784840'
+  actionpack (3.2.14) lib/action_view/template.rb:145:in `block in render'
+  activesupport (3.2.14) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.14) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:48:in `block (2 levels) in render_template'
+  actionpack (3.2.14) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.14) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.14) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:47:in `block in render_template'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:55:in `render_with_layout'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:19:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.14) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:414:in `_run__3911091271021239102__process_action__1811103180291185774__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.14) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.14) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  mongoid (3.1.7) lib/rack/mongoid/middleware/identity_map.rb:34:in `block in call'
+  mongoid (3.1.7) lib/mongoid/unit_of_work.rb:39:in `unit_of_work'
+  mongoid (3.1.7) lib/rack/mongoid/middleware/identity_map.rb:34:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.7) lib/rack/etag.rb:23:in `call'
+  rack (1.4.7) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.7) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.7) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `_run__449147010974284015__call__2503202069508822120__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.7) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.7) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.7) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.7) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.7) lib/rack/handler/webrick.rb:59:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/3b165dd32e4d5813/variables" for 127.0.0.1 at 2016-03-28 14:16:04 +0530
+
+
+Started GET "/" for 127.0.0.1 at 2016-03-28 14:17:34 +0530
+Processing by HomeController#index as HTML
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0118ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=savo collection=users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (6.3651ms)
+  Rendered home/index.html.erb within layouts/application (8.5ms)
+Warning. Error encountered while saving cache /Users/MacbookPro/Desktop/dev/savo_rails/rails3-mongoid-devise/tmp/cache/sass/00f3722c0be0cad49a1174d9d62702da9385658e/application.css.scssc: can't dump anonymous class #<Class:0x007ffd62f0d860>
+
+Warning. Error encountered while saving cache /Users/MacbookPro/Desktop/dev/savo_rails/rails3-mongoid-devise/tmp/cache/sass/00f3722c0be0cad49a1174d9d62702da9385658e/home.css.scssc: can't dump anonymous class #<Class:0x007ffd62f0d860>
+
+Compiled home.css  (2ms)  (pid 36444)
+Compiled application.css  (13ms)  (pid 36444)
+Compiled jquery.js  (6ms)  (pid 36444)
+Compiled jquery_ujs.js  (0ms)  (pid 36444)
+Compiled home.js  (69ms)  (pid 36444)
+Compiled application.js  (178ms)  (pid 36444)
+  Rendered layouts/_navigation.html.erb (2.7ms)
+  Rendered layouts/_messages.html.erb (0.8ms)
+Completed 200 OK in 241ms (Views: 240.4ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-03-28 14:17:36 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered /usr/local/bin/ruby/2.0.0/gems/devise-3.5.6/app/views/devise/sessions/new.html.erb within layouts/application (45.9ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 55ms (Views: 52.9ms)
